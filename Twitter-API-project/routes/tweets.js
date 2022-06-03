@@ -9,6 +9,19 @@ const { Tweet } = db;
 const { asyncHandler, handleValidationErrors } = require('../utils');
 
 
+// const handleValidationErrors = (req, res, next) => {
+//   const validationErrors = validationResult(req);
+//   if (!validationErrors.isEmpty()) {
+//     const errors = validationErrors.array().map((error) => error.msg);
+//     const err = Error("Bad request.");
+//     err.errors = errors;
+//     err.status = 400;
+//     err.title = "Bad request.";
+//     return next(err);
+//   }
+//   next();
+// };
+
 const tweetNotFoundError = (id) => {
   const err = Error(`Tweet with id of ${id} could not be found.`);
   err.title = "Tweet not found.";
