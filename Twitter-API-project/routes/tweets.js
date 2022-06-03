@@ -3,6 +3,7 @@ const app = require("../app");
 const { check, validationResult } = require("express-validator");
 const router = express.Router();
 const cors = require("cors");
+const { requireAuth } = require("../auth");
 
 const db = require("../db/models");
 const { Tweet } = db;
@@ -37,6 +38,8 @@ const validateTweet = [
     .isLength({ max: 280 })
     .withMessage("Tweet message can't be longer than 280"),
 ];
+
+router.use(requireAuth);
 
 router.get(
   "/",
